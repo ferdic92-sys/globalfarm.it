@@ -1,0 +1,767 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Global Farm srl — Cultivating partnerships. Growing investments.</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Jost:wght@300;400;500&display=swap" rel="stylesheet" />
+
+<style>
+  :root {
+    --green-deep:  #0d2b1e;
+    --green-mid:   #1a4a30;
+    --green-light: #2a6b47;
+    --gold:        #c9a040;
+    --gold-light:  #e8c86a;
+    --cream:       #f4efe4;
+    --cream-dark:  #e8e0d0;
+    --text-dark:   #0d1a12;
+    --text-mid:    #3a4a3e;
+    --white:       #fdfcf8;
+  }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+  body { font-family: 'Jost', sans-serif; background: var(--cream); color: var(--text-dark); overflow-x: hidden; }
+
+  /* ── NAV ── */
+  nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 1.2rem 4vw;
+    background: rgba(13,43,30,0.93);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid rgba(201,160,64,0.25);
+  }
+  .nav-logo {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.5rem; font-weight: 600;
+    color: var(--gold-light); letter-spacing: 0.08em; text-decoration: none;
+  }
+  .nav-logo span { color: var(--cream); font-weight: 300; }
+  .nav-links { display: flex; gap: 2.2rem; list-style: none; }
+  .nav-links a {
+    font-size: 0.75rem; font-weight: 500; letter-spacing: 0.14em;
+    text-transform: uppercase; color: rgba(244,239,228,0.7); text-decoration: none;
+    transition: color 0.25s;
+  }
+  .nav-links a:hover { color: var(--gold-light); }
+  .lang-switcher { display: flex; gap: 0.4rem; }
+  .lang-btn {
+    background: transparent; border: 1px solid rgba(201,160,64,0.35);
+    color: rgba(244,239,228,0.6); font-family: 'Jost', sans-serif;
+    font-size: 0.7rem; font-weight: 500; letter-spacing: 0.1em;
+    padding: 0.3rem 0.55rem; border-radius: 2px; cursor: pointer; transition: all 0.2s;
+  }
+  .lang-btn:hover, .lang-btn.active { background: var(--gold); border-color: var(--gold); color: var(--green-deep); }
+
+  /* ── HERO ── */
+  .hero {
+    min-height: 100vh; background: var(--green-deep);
+    display: flex; flex-direction: column; justify-content: center; align-items: flex-start;
+    padding: 0 10vw; position: relative; overflow: hidden;
+  }
+  .hero::before {
+    content: ''; position: absolute; inset: 0;
+    background:
+      radial-gradient(ellipse 60% 50% at 80% 60%, rgba(42,107,71,0.4) 0%, transparent 70%),
+      radial-gradient(ellipse 40% 60% at 20% 20%, rgba(201,160,64,0.08) 0%, transparent 60%);
+  }
+  .hero-grain {
+    position: absolute; inset: 0;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E");
+    opacity: 0.5; pointer-events: none;
+  }
+  .hero-claim {
+    font-family: 'Jost', sans-serif; font-size: 0.72rem; font-weight: 500;
+    letter-spacing: 0.22em; text-transform: uppercase; color: var(--gold);
+    margin-bottom: 1.8rem; position: relative;
+    animation: fadeUp 0.8s ease both;
+  }
+  .hero-claim::before {
+    content: ''; display: inline-block; width: 2rem; height: 1px;
+    background: var(--gold); vertical-align: middle; margin-right: 0.8rem;
+  }
+  .hero h1 {
+    font-family: 'Cormorant Garamond', serif; font-weight: 300;
+    font-size: clamp(3.5rem, 7vw, 6.5rem); line-height: 1.05;
+    color: var(--white); max-width: 14ch; position: relative;
+    animation: fadeUp 0.9s ease 0.1s both;
+  }
+  .hero h1 em { font-style: italic; color: var(--gold-light); }
+  .hero-sub {
+    font-size: 1rem; font-weight: 300; color: rgba(244,239,228,0.65);
+    max-width: 46ch; line-height: 1.8; margin-top: 2rem; position: relative;
+    animation: fadeUp 1s ease 0.2s both;
+  }
+  .hero-cta {
+    display: inline-flex; align-items: center; gap: 0.8rem;
+    margin-top: 2.8rem; padding: 0.9rem 2rem; background: var(--gold);
+    color: var(--green-deep); font-size: 0.78rem; font-weight: 500;
+    letter-spacing: 0.15em; text-transform: uppercase; text-decoration: none;
+    border-radius: 2px; transition: background 0.25s, transform 0.2s; position: relative;
+    animation: fadeUp 1s ease 0.3s both;
+  }
+  .hero-cta:hover { background: var(--gold-light); transform: translateY(-2px); }
+  .hero-cta svg { width: 16px; }
+  .hero-scroll {
+    position: absolute; bottom: 2.5rem; left: 50%; transform: translateX(-50%);
+    display: flex; flex-direction: column; align-items: center; gap: 0.6rem;
+    color: rgba(244,239,228,0.35); font-size: 0.65rem; letter-spacing: 0.2em; text-transform: uppercase;
+    animation: fadeIn 2s ease 1s both;
+  }
+  .hero-scroll-line {
+    width: 1px; height: 3rem;
+    background: linear-gradient(to bottom, rgba(201,160,64,0.6), transparent);
+    animation: scrollPulse 2s ease infinite;
+  }
+
+  /* ── SECTION BASE ── */
+  section { padding: 7rem 10vw; }
+  .section-tag {
+    font-size: 0.7rem; font-weight: 500; letter-spacing: 0.22em;
+    text-transform: uppercase; color: var(--green-light); margin-bottom: 1rem;
+  }
+  .section-tag::before {
+    content: ''; display: inline-block; width: 1.5rem; height: 1px;
+    background: var(--gold); vertical-align: middle; margin-right: 0.7rem;
+  }
+  h2 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(2.2rem, 4vw, 3.5rem); font-weight: 400; line-height: 1.15; color: var(--green-deep);
+  }
+
+  /* ── ABOUT ── */
+  .about { background: var(--white); }
+  .about-inner {
+    display: grid; grid-template-columns: 1fr 1fr; gap: 6vw; align-items: start;
+  }
+  .about-text p {
+    font-size: 1rem; font-weight: 300; line-height: 1.85; color: var(--text-mid); margin-top: 1.4rem;
+  }
+  .about-stat-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; }
+  .stat-card {
+    background: var(--cream); border: 1px solid var(--cream-dark);
+    border-top: 3px solid var(--gold); padding: 1.8rem 1.5rem; border-radius: 2px;
+  }
+  .stat-card .num {
+    font-family: 'Cormorant Garamond', serif; font-size: 2.8rem;
+    font-weight: 300; color: var(--green-deep); line-height: 1;
+  }
+  .stat-card .num em { color: var(--gold); font-style: normal; }
+  .stat-card .label {
+    font-size: 0.72rem; font-weight: 500; letter-spacing: 0.1em;
+    text-transform: uppercase; color: var(--text-mid); margin-top: 0.5rem; line-height: 1.4;
+  }
+
+  /* ── AGREEMENT BANNER ── */
+  .agreement-banner {
+    background: var(--green-deep); color: var(--cream);
+    padding: 5rem 10vw; position: relative; overflow: hidden;
+  }
+  .agreement-banner::after {
+    content: ''; position: absolute; top: 0; right: 0;
+    width: 40%; height: 100%;
+    background: linear-gradient(to left, rgba(42,107,71,0.3), transparent);
+  }
+  .agreement-banner .section-tag { color: var(--gold-light); }
+  .agreement-banner h2 { color: var(--white); max-width: 20ch; }
+  .agreement-banner p {
+    font-size: 1rem; font-weight: 300; line-height: 1.85;
+    color: rgba(244,239,228,0.7); max-width: 54ch; margin-top: 1.5rem;
+  }
+  .agreement-date {
+    display: inline-flex; align-items: center; gap: 0.7rem;
+    margin-top: 2rem; padding: 0.7rem 1.3rem;
+    border: 1px solid rgba(201,160,64,0.4); border-radius: 2px;
+    font-size: 0.78rem; letter-spacing: 0.12em; color: var(--gold-light);
+  }
+
+  /* ── MILESTONE ── */
+  .milestone { background: var(--cream); }
+  .timeline {
+    display: flex; flex-direction: column; gap: 0;
+    margin-top: 4rem; position: relative;
+  }
+  .timeline::before {
+    content: ''; position: absolute; left: 1.1rem; top: 0; bottom: 0;
+    width: 1px; background: var(--cream-dark);
+  }
+  .timeline-item {
+    display: flex; gap: 2.5rem; padding-bottom: 3rem; position: relative;
+  }
+  .timeline-item:last-child { padding-bottom: 0; }
+  .timeline-dot {
+    width: 2.2rem; height: 2.2rem; border-radius: 50%; flex-shrink: 0;
+    background: var(--white); border: 2px solid var(--gold);
+    display: flex; align-items: center; justify-content: center; position: relative; z-index: 1;
+  }
+  .timeline-dot-inner {
+    width: 0.6rem; height: 0.6rem; border-radius: 50%; background: var(--gold);
+  }
+  .timeline-content { padding-top: 0.2rem; }
+  .timeline-date {
+    font-size: 0.7rem; font-weight: 500; letter-spacing: 0.16em;
+    text-transform: uppercase; color: var(--gold); margin-bottom: 0.5rem;
+  }
+  .timeline-content h3 {
+    font-family: 'Cormorant Garamond', serif; font-size: 1.4rem;
+    font-weight: 600; color: var(--green-deep); margin-bottom: 0.7rem;
+  }
+  .timeline-content p {
+    font-size: 0.92rem; font-weight: 300; line-height: 1.8; color: var(--text-mid); max-width: 54ch;
+  }
+
+  /* ── PILLARS ── */
+  .responsibilities { background: var(--white); }
+  .pillar-grid {
+    display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; margin-top: 4rem;
+  }
+  .pillar-card {
+    background: var(--cream); border: 1px solid var(--cream-dark);
+    border-top: 3px solid var(--gold); padding: 2.5rem 2rem; border-radius: 2px;
+    transition: transform 0.25s, box-shadow 0.25s;
+  }
+  .pillar-card:hover { transform: translateY(-4px); box-shadow: 0 12px 32px rgba(13,43,30,0.08); }
+  .pillar-num {
+    font-family: 'Cormorant Garamond', serif; font-size: 3rem;
+    font-weight: 300; color: rgba(201,160,64,0.25); line-height: 1; margin-bottom: 1rem;
+  }
+  .pillar-card h3 {
+    font-family: 'Cormorant Garamond', serif; font-size: 1.35rem;
+    font-weight: 600; color: var(--green-deep); line-height: 1.3; margin-bottom: 1rem;
+  }
+  .pillar-card p { font-size: 0.9rem; font-weight: 300; line-height: 1.8; color: var(--text-mid); }
+
+  /* ── WHY UZBEKISTAN ── */
+  .why-uzbekistan { background: var(--green-deep); }
+  .why-uzbekistan .section-tag { color: var(--gold-light); }
+  .why-uzbekistan h2 { color: var(--white); margin-bottom: 3.5rem; }
+  .why-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; }
+  .why-card {
+    border: 1px solid rgba(201,160,64,0.2); padding: 2rem 1.8rem; border-radius: 2px;
+    background: rgba(255,255,255,0.03); transition: border-color 0.25s, background 0.25s;
+  }
+  .why-card:hover { border-color: rgba(201,160,64,0.5); background: rgba(255,255,255,0.06); }
+  .why-icon {
+    font-size: 1.8rem; margin-bottom: 1rem; line-height: 1;
+  }
+  .why-card h3 {
+    font-family: 'Cormorant Garamond', serif; font-size: 1.25rem;
+    font-weight: 600; color: var(--gold-light); margin-bottom: 0.8rem;
+  }
+  .why-card p { font-size: 0.88rem; font-weight: 300; line-height: 1.8; color: rgba(244,239,228,0.65); }
+
+  /* ── SECTORS ── */
+  .sectors { background: var(--cream); }
+  .sector-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1.5rem; margin-top: 3.5rem; }
+  .sector-card {
+    background: var(--white); border: 1px solid var(--cream-dark);
+    padding: 2rem 1.5rem; border-radius: 2px; text-align: center;
+    transition: transform 0.25s, border-color 0.25s;
+  }
+  .sector-card:hover { transform: translateY(-4px); border-color: var(--gold); }
+  .sector-icon { font-size: 2rem; margin-bottom: 1rem; }
+  .sector-card h3 {
+    font-family: 'Cormorant Garamond', serif; font-size: 1.1rem;
+    font-weight: 600; color: var(--green-deep); margin-bottom: 0.7rem; line-height: 1.3;
+  }
+  .sector-card p { font-size: 0.82rem; font-weight: 300; line-height: 1.7; color: var(--text-mid); }
+
+  /* ── CONTACT ── */
+  .contact { background: var(--white); text-align: center; }
+  .contact h2 { margin: 0 auto; max-width: 22ch; }
+  .contact > p {
+    font-size: 1rem; font-weight: 300; line-height: 1.8; color: var(--text-mid);
+    max-width: 46ch; margin: 1.5rem auto 0;
+  }
+  .contact-cards {
+    display: flex; justify-content: center; gap: 1.5rem;
+    margin-top: 3rem; flex-wrap: wrap;
+  }
+  .contact-card {
+    border: 1px solid var(--cream-dark); padding: 2rem 2.5rem; border-radius: 2px;
+    min-width: 200px; text-align: left; background: var(--cream);
+    transition: border-color 0.2s, transform 0.2s;
+  }
+  .contact-card:hover { border-color: var(--gold); transform: translateY(-3px); }
+  .contact-card .cc-label {
+    font-size: 0.65rem; font-weight: 500; letter-spacing: 0.18em;
+    text-transform: uppercase; color: var(--gold); margin-bottom: 0.5rem;
+  }
+  .contact-card .cc-value {
+    font-family: 'Cormorant Garamond', serif; font-size: 1.05rem; color: var(--green-deep);
+  }
+
+  /* ── FOOTER ── */
+  footer {
+    background: var(--green-deep); padding: 2.5rem 10vw;
+    display: flex; flex-direction: column; gap: 0.6rem; align-items: center; text-align: center;
+  }
+  footer .f-logo {
+    font-family: 'Cormorant Garamond', serif; font-size: 1.2rem;
+    font-weight: 600; color: var(--gold-light); letter-spacing: 0.08em; margin-bottom: 0.4rem;
+  }
+  footer .f-logo span { color: rgba(244,239,228,0.5); font-weight: 300; }
+  footer p { font-size: 0.72rem; color: rgba(244,239,228,0.35); letter-spacing: 0.06em; }
+
+  /* ── ANIMATIONS ── */
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(24px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+  @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+  @keyframes scrollPulse {
+    0%,100% { opacity: 0.4; transform: scaleY(1); }
+    50%      { opacity: 1;   transform: scaleY(1.15); }
+  }
+  .reveal { opacity: 0; transform: translateY(30px); transition: opacity 0.7s ease, transform 0.7s ease; }
+  .reveal.visible { opacity: 1; transform: none; }
+
+  /* ── RESPONSIVE ── */
+  @media (max-width: 900px) {
+    .about-inner, .pillar-grid, .why-grid { grid-template-columns: 1fr; }
+    .sector-grid { grid-template-columns: 1fr 1fr; }
+    .nav-links { display: none; }
+    section { padding: 5rem 6vw; }
+    .hero { padding: 0 6vw; }
+    .agreement-banner { padding: 4rem 6vw; }
+  }
+  @media (max-width: 540px) {
+    .sector-grid { grid-template-columns: 1fr; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a href="#top" class="nav-logo">Global Farm <span>srl</span></a>
+  <ul class="nav-links">
+    <li><a href="#about"     data-i18n="nav_about">About</a></li>
+    <li><a href="#agreement" data-i18n="nav_agreement">Agreement</a></li>
+    <li><a href="#scope"     data-i18n="nav_scope">Scope</a></li>
+    <li><a href="#why"       data-i18n="nav_why">Why Uzbekistan</a></li>
+    <li><a href="#contact"   data-i18n="nav_contact">Contact</a></li>
+  </ul>
+  <div class="lang-switcher">
+    <button class="lang-btn active" onclick="setLang('en')">EN</button>
+    <button class="lang-btn" onclick="setLang('it')">IT</button>
+    <button class="lang-btn" onclick="setLang('uz')">UZ</button>
+    <button class="lang-btn" onclick="setLang('ru')">RU</button>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero" id="top">
+  <div class="hero-grain"></div>
+  <div class="hero-claim" data-i18n="hero_claim">Cultivating partnerships. Growing investments.</div>
+  <h1 data-i18n="hero_h1">Growing the <em>Future</em> of Agriculture</h1>
+  <p class="hero-sub" data-i18n="hero_sub">Global Farm srl bridges Italian agricultural excellence with Uzbekistan's vast land opportunities — connecting investors, expertise, and vision across continents.</p>
+  <a href="#about" class="hero-cta">
+    <span data-i18n="hero_cta">Discover Our Mission</span>
+    <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M3 8h10M9 4l4 4-4 4"/></svg>
+  </a>
+  <div class="hero-scroll">
+    <div class="hero-scroll-line"></div>
+    <span data-i18n="scroll">Scroll</span>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section class="about reveal" id="about">
+  <div class="about-inner">
+    <div class="about-text">
+      <div class="section-tag" data-i18n="about_tag">Who We Are</div>
+      <h2 data-i18n="about_h2">An Italian startup with a global agricultural vision</h2>
+      <p data-i18n="about_p1">Global Farm srl is an Italian company born from a simple conviction: world-class agricultural expertise, when channelled into fertile territories with the right institutional backing, can generate extraordinary value for investors and communities alike.</p>
+      <p data-i18n="about_p2">We operate at the intersection of agribusiness, investment facilitation, and international cooperation — bringing Italian know-how to one of Central Asia's most promising agricultural frontiers.</p>
+      <p data-i18n="about_p3">Global Farm's ambition is to become the reference point for foreign investment in Uzbek agriculture — and, over time, across Central Asia. Our goal is to develop a structured pipeline of investment-ready projects, connecting international capital with the region's extraordinary agricultural potential. We believe that sustainable growth requires more than funding: it requires trust, expertise, and long-term institutional relationships — and that is precisely what Global Farm is built to provide.</p>
+    </div>
+    <div class="about-stat-grid reveal">
+      <div class="stat-card">
+        <div class="num">24<em>/03</em></div>
+        <div class="label" data-i18n="stat1">Agreement signed in Tashkent, 2026</div>
+      </div>
+      <div class="stat-card">
+        <div class="num">4<em>+</em></div>
+        <div class="label" data-i18n="stat2">Countries of operational scope</div>
+      </div>
+      <div class="stat-card">
+        <div class="num">7</div>
+        <div class="label" data-i18n="stat3">Core cooperation pillars</div>
+      </div>
+      <div class="stat-card">
+        <div class="num"><em>∞</em></div>
+        <div class="label" data-i18n="stat4">Potential for growth and investment</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- AGREEMENT BANNER -->
+<div class="agreement-banner reveal" id="agreement">
+  <div class="section-tag" data-i18n="agr_tag">Historic Partnership</div>
+  <h2 data-i18n="agr_h2">A landmark agreement with the Uzbek Ministry of Agriculture</h2>
+  <p data-i18n="agr_p">On March 24, 2026, at the Italy–Central Asia Business Forum in Tashkent, Global Farm srl formalised a strategic cooperation agreement with the Ministry of Agriculture of the Republic of Uzbekistan. This agreement marks the beginning of a new chapter in Italian–Uzbek agricultural relations, opening doors to large-scale investment in land, infrastructure, and agri-food production.</p>
+  <div class="agreement-date">
+    <svg width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="3" width="12" height="11" rx="1.5"/><path d="M5 2v2M11 2v2M2 7h12"/></svg>
+    <span data-i18n="agr_date">Signed · Tashkent · 24 March 2026</span>
+  </div>
+</div>
+
+<!-- MILESTONE -->
+<section class="milestone reveal" id="milestone">
+  <div class="section-tag" data-i18n="ms_tag">Our Journey</div>
+  <h2 data-i18n="ms_h2">A story just beginning</h2>
+  <div class="timeline">
+    <div class="timeline-item reveal">
+      <div class="timeline-dot"><div class="timeline-dot-inner"></div></div>
+      <div class="timeline-content">
+        <div class="timeline-date" data-i18n="ms1_date">Early 2026</div>
+        <h3 data-i18n="ms1_title">First Contact</h3>
+        <p data-i18n="ms1_body">Global Farm initiates formal dialogue with the Uzbek Ministry of Agriculture, laying the groundwork for a structured cooperation framework.</p>
+      </div>
+    </div>
+    <div class="timeline-item reveal">
+      <div class="timeline-dot"><div class="timeline-dot-inner"></div></div>
+      <div class="timeline-content">
+        <div class="timeline-date" data-i18n="ms2_date">24 March 2026</div>
+        <h3 data-i18n="ms2_title">Agreement Signed</h3>
+        <p data-i18n="ms2_body">At the Italy–Central Asia Business Forum in Tashkent, Global Farm and the Ministry of Agriculture of Uzbekistan sign a strategic cooperation agreement — a milestone that opens a new chapter in agricultural investment between Italy and Central Asia.</p>
+      </div>
+    </div>
+    <div class="timeline-item reveal">
+      <div class="timeline-dot"><div class="timeline-dot-inner"></div></div>
+      <div class="timeline-content">
+        <div class="timeline-date" data-i18n="ms3_date">2026 and beyond</div>
+        <h3 data-i18n="ms3_title">Building the Pipeline</h3>
+        <p data-i18n="ms3_body">Global Farm begins identifying priority investment areas, establishing institutional relationships, and developing the first project opportunities for international partners.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SCOPE -->
+<section class="responsibilities reveal" id="scope">
+  <div class="section-tag" data-i18n="scope_tag">What We Do Together</div>
+  <h2 data-i18n="scope_h2">A shared vision for the future of agriculture</h2>
+  <div class="pillar-grid">
+    <div class="pillar-card reveal">
+      <div class="pillar-num">01</div>
+      <h3 data-i18n="p1_title">Building Modern Agricultural Infrastructure</h3>
+      <p data-i18n="p1_body">Global Farm brings hands-on expertise in developing agro-industrial facilities — from greenhouses and orchards to processing and distribution units. The Uzbek Ministry of Agriculture identifies the most suitable regions and lands, and facilitates access to permits, certifications, and institutional support. Together, we lay the foundations for a modern, scalable agricultural ecosystem.</p>
+    </div>
+    <div class="pillar-card reveal">
+      <div class="pillar-num">02</div>
+      <h3 data-i18n="p2_title">Knowledge Transfer &amp; Human Capital</h3>
+      <p data-i18n="p2_body">One of the pillars of this cooperation is the exchange of expertise. Global Farm introduces Italian best practices in nursery management, variety selection, food safety, quality control, and phytosanitary standards. Training programmes, workshops, and field visits ensure that Uzbek farmers, specialists, and distributors gain lasting, practical knowledge.</p>
+    </div>
+    <div class="pillar-card reveal">
+      <div class="pillar-num">03</div>
+      <h3 data-i18n="p3_title">Attracting Investment &amp; Opening Markets</h3>
+      <p data-i18n="p3_body">Global Farm actively works to attract foreign direct investment — with a particular focus on Italian and European partners — and to connect Uzbek agricultural production with international markets. The Ministry provides the institutional framework: state incentives, regulatory support, and coordination with government bodies to ensure a stable and transparent environment for investors.</p>
+    </div>
+    <div class="pillar-card reveal">
+      <div class="pillar-num">04</div>
+      <h3 data-i18n="p4_title">A Long-Term Institutional Partnership</h3>
+      <p data-i18n="p4_body">This cooperation goes beyond a single project. With the backing of the Uzbek Ministry of Agriculture and the operational expertise of Global Farm, the agreement creates a long-term channel for joint initiatives, business events, and site visits — a living platform where ideas become ventures and ventures become growth.</p>
+    </div>
+  </div>
+</section>
+
+<!-- WHY UZBEKISTAN -->
+<section class="why-uzbekistan reveal" id="why">
+  <div class="section-tag" data-i18n="why_tag">Why Uzbekistan</div>
+  <h2 data-i18n="why_h2">A land of extraordinary agricultural potential</h2>
+  <div class="why-grid">
+    <div class="why-card reveal">
+      <div class="why-icon">🌍</div>
+      <h3 data-i18n="why1_title">Strategic Location</h3>
+      <p data-i18n="why1_body">Uzbekistan sits at the crossroads of Central Asia, bordering five countries and offering access to a regional market of over 100 million people. Its position along historic trade routes makes it a natural hub for agricultural distribution across the region.</p>
+    </div>
+    <div class="why-card reveal">
+      <div class="why-icon">🌱</div>
+      <h3 data-i18n="why2_title">Fertile Land &amp; Favourable Climate</h3>
+      <p data-i18n="why2_body">The country's diverse geography — from fertile river valleys to vast plains — supports a wide range of crops, from fruits and vegetables to grains. The climate is well-suited for greenhouse cultivation and year-round production cycles.</p>
+    </div>
+    <div class="why-card reveal">
+      <div class="why-icon">🏛️</div>
+      <h3 data-i18n="why3_title">Government-Backed Investment Framework</h3>
+      <p data-i18n="why3_body">The Uzbek government has made attracting foreign investment a national priority. Through our cooperation agreement with the Ministry of Agriculture, Global Farm investors benefit from direct institutional support, streamlined procedures, and access to state incentives.</p>
+    </div>
+    <div class="why-card reveal">
+      <div class="why-icon">📈</div>
+      <h3 data-i18n="why4_title">An Emerging Market at the Right Moment</h3>
+      <p data-i18n="why4_body">Uzbekistan's agricultural sector is undergoing rapid modernisation. Entering now means positioning ahead of the curve — with the advantage of institutional backing, lower entry costs, and a first-mover advantage in a market with significant room for growth.</p>
+    </div>
+  </div>
+</section>
+
+<!-- SECTORS -->
+<section class="sectors reveal" id="sectors">
+  <div class="section-tag" data-i18n="sec_tag">Investment Areas</div>
+  <h2 data-i18n="sec_h2">Where we operate</h2>
+  <div class="sector-grid">
+    <div class="sector-card reveal">
+      <div class="sector-icon">🌾</div>
+      <h3 data-i18n="sec1_title">Certified Seeds &amp; Plant Material</h3>
+      <p data-i18n="sec1_body">Development of nurseries and seed production facilities aligned with international phytosanitary standards.</p>
+    </div>
+    <div class="sector-card reveal">
+      <div class="sector-icon">🏗️</div>
+      <h3 data-i18n="sec2_title">Greenhouse &amp; Protected Cultivation</h3>
+      <p data-i18n="sec2_body">Design and establishment of modern greenhouse infrastructure for year-round vegetable and fruit production.</p>
+    </div>
+    <div class="sector-card reveal">
+      <div class="sector-icon">🍎</div>
+      <h3 data-i18n="sec3_title">Orchard &amp; Fruit Production</h3>
+      <p data-i18n="sec3_body">Investment in high-value fruit cultivation, from apples and apricots to pomegranates and grapes.</p>
+    </div>
+    <div class="sector-card reveal">
+      <div class="sector-icon">📦</div>
+      <h3 data-i18n="sec4_title">Agro-Processing &amp; Packaging</h3>
+      <p data-i18n="sec4_body">Development of post-harvest processing, cold chain logistics, and export-ready packaging facilities.</p>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section class="contact reveal" id="contact">
+  <div class="section-tag" data-i18n="contact_tag">Get in Touch</div>
+  <h2 data-i18n="contact_h2">Ready to explore investment opportunities?</h2>
+  <p data-i18n="contact_p">Whether you are an investor, an agricultural company, or an institutional partner, we welcome conversations about the future of global farming.</p>
+  <div class="contact-cards">
+    <div class="contact-card">
+      <div class="cc-label" data-i18n="cc_email">Email</div>
+      <div class="cc-value">info@globalfarmsrl.com</div>
+    </div>
+    <div class="contact-card">
+      <div class="cc-label" data-i18n="cc_phone">Phone</div>
+      <div class="cc-value">+39 — — — — — — —</div>
+    </div>
+    <div class="contact-card">
+      <div class="cc-label" data-i18n="cc_address">Address</div>
+      <div class="cc-value">Via dei Genieri 175, Roma</div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="f-logo">Global Farm <span>srl</span></div>
+  <p>Via dei Genieri 175 · 00143 Roma · P.IVA 18337321006</p>
+  <p data-i18n="footer_copy">© 2026 Global Farm srl · All rights reserved</p>
+</footer>
+
+<script>
+/* ─── TRANSLATIONS ─── */
+const i18n = {
+  en: {
+    nav_about:"About", nav_agreement:"Agreement", nav_scope:"Scope", nav_why:"Why Uzbekistan", nav_contact:"Contact",
+    hero_claim:"Cultivating partnerships. Growing investments.",
+    hero_h1:"Growing the <em>Future</em> of Agriculture",
+    hero_sub:"Global Farm srl bridges Italian agricultural excellence with Uzbekistan's vast land opportunities — connecting investors, expertise, and vision across continents.",
+    hero_cta:"Discover Our Mission", scroll:"Scroll",
+    about_tag:"Who We Are", about_h2:"An Italian startup with a global agricultural vision",
+    about_p1:"Global Farm srl is an Italian company born from a simple conviction: world-class agricultural expertise, when channelled into fertile territories with the right institutional backing, can generate extraordinary value for investors and communities alike.",
+    about_p2:"We operate at the intersection of agribusiness, investment facilitation, and international cooperation — bringing Italian know-how to one of Central Asia's most promising agricultural frontiers.",
+    about_p3:"Global Farm's ambition is to become the reference point for foreign investment in Uzbek agriculture — and, over time, across Central Asia. Our goal is to develop a structured pipeline of investment-ready projects, connecting international capital with the region's extraordinary agricultural potential. We believe that sustainable growth requires more than funding: it requires trust, expertise, and long-term institutional relationships — and that is precisely what Global Farm is built to provide.",
+    stat1:"Agreement signed in Tashkent, 2026", stat2:"Countries of operational scope",
+    stat3:"Core cooperation pillars", stat4:"Potential for growth and investment",
+    agr_tag:"Historic Partnership", agr_h2:"A landmark agreement with the Uzbek Ministry of Agriculture",
+    agr_p:"On March 24, 2026, at the Italy–Central Asia Business Forum in Tashkent, Global Farm srl formalised a strategic cooperation agreement with the Ministry of Agriculture of the Republic of Uzbekistan. This agreement marks the beginning of a new chapter in Italian–Uzbek agricultural relations, opening doors to large-scale investment in land, infrastructure, and agri-food production.",
+    agr_date:"Signed · Tashkent · 24 March 2026",
+    ms_tag:"Our Journey", ms_h2:"A story just beginning",
+    ms1_date:"Early 2026", ms1_title:"First Contact",
+    ms1_body:"Global Farm initiates formal dialogue with the Uzbek Ministry of Agriculture, laying the groundwork for a structured cooperation framework.",
+    ms2_date:"24 March 2026", ms2_title:"Agreement Signed",
+    ms2_body:"At the Italy–Central Asia Business Forum in Tashkent, Global Farm and the Ministry of Agriculture of Uzbekistan sign a strategic cooperation agreement — a milestone that opens a new chapter in agricultural investment between Italy and Central Asia.",
+    ms3_date:"2026 and beyond", ms3_title:"Building the Pipeline",
+    ms3_body:"Global Farm begins identifying priority investment areas, establishing institutional relationships, and developing the first project opportunities for international partners.",
+    scope_tag:"What We Do Together", scope_h2:"A shared vision for the future of agriculture",
+    p1_title:"Building Modern Agricultural Infrastructure",
+    p1_body:"Global Farm brings hands-on expertise in developing agro-industrial facilities — from greenhouses and orchards to processing and distribution units. The Uzbek Ministry of Agriculture identifies the most suitable regions and lands, and facilitates access to permits, certifications, and institutional support. Together, we lay the foundations for a modern, scalable agricultural ecosystem.",
+    p2_title:"Knowledge Transfer & Human Capital",
+    p2_body:"One of the pillars of this cooperation is the exchange of expertise. Global Farm introduces Italian best practices in nursery management, variety selection, food safety, quality control, and phytosanitary standards. Training programmes, workshops, and field visits ensure that Uzbek farmers, specialists, and distributors gain lasting, practical knowledge.",
+    p3_title:"Attracting Investment & Opening Markets",
+    p3_body:"Global Farm actively works to attract foreign direct investment — with a particular focus on Italian and European partners — and to connect Uzbek agricultural production with international markets. The Ministry provides the institutional framework: state incentives, regulatory support, and coordination with government bodies to ensure a stable and transparent environment for investors.",
+    p4_title:"A Long-Term Institutional Partnership",
+    p4_body:"This cooperation goes beyond a single project. With the backing of the Uzbek Ministry of Agriculture and the operational expertise of Global Farm, the agreement creates a long-term channel for joint initiatives, business events, and site visits — a living platform where ideas become ventures and ventures become growth.",
+    why_tag:"Why Uzbekistan", why_h2:"A land of extraordinary agricultural potential",
+    why1_title:"Strategic Location", why1_body:"Uzbekistan sits at the crossroads of Central Asia, bordering five countries and offering access to a regional market of over 100 million people. Its position along historic trade routes makes it a natural hub for agricultural distribution across the region.",
+    why2_title:"Fertile Land & Favourable Climate", why2_body:"The country's diverse geography — from fertile river valleys to vast plains — supports a wide range of crops, from fruits and vegetables to grains. The climate is well-suited for greenhouse cultivation and year-round production cycles.",
+    why3_title:"Government-Backed Investment Framework", why3_body:"The Uzbek government has made attracting foreign investment a national priority. Through our cooperation agreement with the Ministry of Agriculture, Global Farm investors benefit from direct institutional support, streamlined procedures, and access to state incentives.",
+    why4_title:"An Emerging Market at the Right Moment", why4_body:"Uzbekistan's agricultural sector is undergoing rapid modernisation. Entering now means positioning ahead of the curve — with the advantage of institutional backing, lower entry costs, and a first-mover advantage in a market with significant room for growth.",
+    sec_tag:"Investment Areas", sec_h2:"Where we operate",
+    sec1_title:"Certified Seeds & Plant Material", sec1_body:"Development of nurseries and seed production facilities aligned with international phytosanitary standards.",
+    sec2_title:"Greenhouse & Protected Cultivation", sec2_body:"Design and establishment of modern greenhouse infrastructure for year-round vegetable and fruit production.",
+    sec3_title:"Orchard & Fruit Production", sec3_body:"Investment in high-value fruit cultivation, from apples and apricots to pomegranates and grapes.",
+    sec4_title:"Agro-Processing & Packaging", sec4_body:"Development of post-harvest processing, cold chain logistics, and export-ready packaging facilities.",
+    contact_tag:"Get in Touch", contact_h2:"Ready to explore investment opportunities?",
+    contact_p:"Whether you are an investor, an agricultural company, or an institutional partner, we welcome conversations about the future of global farming.",
+    cc_email:"Email", cc_phone:"Phone", cc_address:"Address",
+    footer_copy:"© 2026 Global Farm srl · All rights reserved"
+  },
+  it: {
+    nav_about:"Chi Siamo", nav_agreement:"Accordo", nav_scope:"Ambito", nav_why:"Perché l'Uzbekistan", nav_contact:"Contatti",
+    hero_claim:"Coltivare partnership. Far crescere gli investimenti.",
+    hero_h1:"Coltivare il <em>Futuro</em> dell'Agricoltura",
+    hero_sub:"Global Farm srl unisce l'eccellenza agricola italiana alle immense opportunità fondiarie dell'Uzbekistan — mettendo in rete investitori, competenze e visione tra i continenti.",
+    hero_cta:"Scopri la Nostra Missione", scroll:"Scorri",
+    about_tag:"Chi Siamo", about_h2:"Una startup italiana con una visione agricola globale",
+    about_p1:"Global Farm srl è un'azienda italiana nata da una convinzione semplice: una competenza agricola di eccellenza, canalizzata in territori fertili con il giusto supporto istituzionale, può generare valore straordinario per investitori e comunità.",
+    about_p2:"Operiamo all'incrocio tra agribusiness, facilitazione degli investimenti e cooperazione internazionale — portando il know-how italiano in una delle frontiere agricole più promettenti dell'Asia Centrale.",
+    about_p3:"L'ambizione di Global Farm è diventare il punto di riferimento per gli investimenti esteri nell'agricoltura uzbeka — e, nel tempo, in tutta l'Asia Centrale. Il nostro obiettivo è sviluppare una pipeline strutturata di progetti pronti all'investimento, connettendo capitale internazionale con lo straordinario potenziale agricolo della regione. Crediamo che la crescita sostenibile richieda più del semplice finanziamento: richiede fiducia, competenza e relazioni istituzionali di lungo periodo — ed è esattamente ciò per cui Global Farm è stata costruita.",
+    stat1:"Accordo firmato a Tashkent, 2026", stat2:"Paesi di operatività",
+    stat3:"Pilastri chiave di cooperazione", stat4:"Potenziale di crescita e investimento",
+    agr_tag:"Partenariato Storico", agr_h2:"Un accordo storico con il Ministero dell'Agricoltura Uzbeko",
+    agr_p:"Il 24 marzo 2026, al Business Forum Italia–Asia Centrale di Tashkent, Global Farm srl ha formalizzato un accordo strategico di cooperazione con il Ministero dell'Agricoltura della Repubblica dell'Uzbekistan. Questo accordo segna l'inizio di un nuovo capitolo nelle relazioni agricole italo-uzbeke, aprendo le porte a investimenti su larga scala in terreni, infrastrutture e produzione agroalimentare.",
+    agr_date:"Firmato · Tashkent · 24 Marzo 2026",
+    ms_tag:"Il Nostro Percorso", ms_h2:"Una storia appena iniziata",
+    ms1_date:"Inizio 2026", ms1_title:"Primo Contatto",
+    ms1_body:"Global Farm avvia un dialogo formale con il Ministero dell'Agricoltura uzbeko, gettando le basi per un quadro strutturato di cooperazione.",
+    ms2_date:"24 Marzo 2026", ms2_title:"Accordo Firmato",
+    ms2_body:"Al Business Forum Italia–Asia Centrale di Tashkent, Global Farm e il Ministero dell'Agricoltura uzbeko firmano un accordo strategico di cooperazione — una pietra miliare che apre un nuovo capitolo negli investimenti agricoli tra Italia e Asia Centrale.",
+    ms3_date:"2026 e oltre", ms3_title:"Costruire la Pipeline",
+    ms3_body:"Global Farm inizia a identificare le aree di investimento prioritarie, a stabilire relazioni istituzionali e a sviluppare le prime opportunità di progetto per i partner internazionali.",
+    scope_tag:"Cosa Facciamo Insieme", scope_h2:"Una visione condivisa per il futuro dell'agricoltura",
+    p1_title:"Costruire Infrastrutture Agricole Moderne",
+    p1_body:"Global Farm porta competenze concrete nello sviluppo di strutture agro-industriali — da serre e frutteti a impianti di trasformazione e distribuzione. Il Ministero dell'Agricoltura uzbeko identifica le regioni e i terreni più idonei e facilita l'accesso a permessi, certificazioni e supporto istituzionale. Insieme, poniamo le basi di un ecosistema agricolo moderno e scalabile.",
+    p2_title:"Trasferimento di Conoscenze e Capitale Umano",
+    p2_body:"Uno dei pilastri di questa cooperazione è lo scambio di competenze. Global Farm introduce le migliori pratiche italiane nella gestione dei vivai, nella selezione varietale, nella sicurezza alimentare, nel controllo qualità e negli standard fitosanitari. Programmi di formazione, workshop e visite in campo garantiscono che agricoltori, specialisti e distributori uzbeki acquisiscano conoscenze pratiche durature.",
+    p3_title:"Attrarre Investimenti e Aprire Mercati",
+    p3_body:"Global Farm lavora attivamente per attrarre investimenti diretti esteri — con un focus particolare su partner italiani ed europei — e per connettere la produzione agricola uzbeka ai mercati internazionali. Il Ministero fornisce il quadro istituzionale: incentivi statali, supporto normativo e coordinamento con gli enti governativi per garantire un ambiente stabile e trasparente per gli investitori.",
+    p4_title:"Un Partenariato Istituzionale a Lungo Termine",
+    p4_body:"Questa cooperazione va ben oltre un singolo progetto. Con il supporto del Ministero dell'Agricoltura uzbeko e le competenze operative di Global Farm, l'accordo crea un canale duraturo per iniziative congiunte, eventi di business e visite in loco — una piattaforma viva dove le idee diventano imprese e le imprese diventano crescita.",
+    why_tag:"Perché l'Uzbekistan", why_h2:"Una terra di straordinario potenziale agricolo",
+    why1_title:"Posizione Strategica", why1_body:"L'Uzbekistan si trova al crocevia dell'Asia Centrale, confinando con cinque paesi e offrendo accesso a un mercato regionale di oltre 100 milioni di persone. La sua posizione lungo le storiche vie commerciali lo rende un hub naturale per la distribuzione agricola nella regione.",
+    why2_title:"Terra Fertile e Clima Favorevole", why2_body:"La diversità geografica del paese — dalle fertili valli fluviali alle vaste pianure — supporta un'ampia gamma di colture, da frutta e verdura ai cereali. Il clima è ideale per la coltivazione in serra e per cicli produttivi tutto l'anno.",
+    why3_title:"Quadro di Investimento Sostenuto dal Governo", why3_body:"Il governo uzbeko ha reso l'attrazione di investimenti esteri una priorità nazionale. Grazie al nostro accordo con il Ministero dell'Agricoltura, gli investitori di Global Farm beneficiano di supporto istituzionale diretto, procedure semplificate e accesso a incentivi statali.",
+    why4_title:"Un Mercato Emergente al Momento Giusto", why4_body:"Il settore agricolo uzbeko sta attraversando una rapida modernizzazione. Entrare ora significa posizionarsi in anticipo sulla curva — con il vantaggio del supporto istituzionale, costi di ingresso contenuti e un vantaggio di first-mover in un mercato con ampi margini di crescita.",
+    sec_tag:"Aree di Investimento", sec_h2:"Dove operiamo",
+    sec1_title:"Sementi Certificate e Materiale Vegetale", sec1_body:"Sviluppo di vivai e impianti di produzione di sementi conformi agli standard fitosanitari internazionali.",
+    sec2_title:"Coltivazione in Serra e Protetta", sec2_body:"Progettazione e realizzazione di infrastrutture moderne per la produzione tutto l'anno di ortaggi e frutta.",
+    sec3_title:"Frutteti e Produzione Frutticola", sec3_body:"Investimenti in colture frutticole ad alto valore aggiunto, dalle mele e albicocche ai melograni e all'uva.",
+    sec4_title:"Agro-Trasformazione e Packaging", sec4_body:"Sviluppo di impianti di lavorazione post-raccolta, logistica della catena del freddo e packaging pronto all'export.",
+    contact_tag:"Contattaci", contact_h2:"Pronto a esplorare le opportunità di investimento?",
+    contact_p:"Che tu sia un investitore, un'azienda agricola o un partner istituzionale, siamo aperti a conversazioni sul futuro dell'agricoltura globale.",
+    cc_email:"Email", cc_phone:"Telefono", cc_address:"Indirizzo",
+    footer_copy:"© 2026 Global Farm srl · Tutti i diritti riservati"
+  },
+  uz: {
+    nav_about:"Biz haqimizda", nav_agreement:"Shartnoma", nav_scope:"Hamkorlik", nav_why:"Nega O'zbekiston", nav_contact:"Aloqa",
+    hero_claim:"Hamkorlikni o'stirish. Investitsiyalarni rivojlantirish.",
+    hero_h1:"Qishloq xo'jaligining <em>Kelajagini</em> o'stirish",
+    hero_sub:"Global Farm srl — Italiyaning qishloq xo'jaligi tajribasini O'zbekistonning ulkan yer imkoniyatlari bilan bog'lovchi ko'prik. Investorlar, bilim va tasavvurni kontinentlar bo'ylab ulaydi.",
+    hero_cta:"Missiyamizni kashf eting", scroll:"Aylantiring",
+    about_tag:"Biz kim edik", about_h2:"Global qishloq xo'jaligi strategiyasiga ega italyan startapi",
+    about_p1:"Global Farm srl — oddiy bir ishonchdan tug'ilgan italyan kompaniyasi: to'g'ri institutsional qo'llab-quvvatlash bilan unumdor hududlarga yo'naltirilgan yuqori darajadagi qishloq xo'jaligi tajribasi investorlar va jamoalar uchun ajoyib qiymat yaratishi mumkin.",
+    about_p2:"Biz agribiznes, investitsiyalarni osonlashtirish va xalqaro hamkorlik kesishmasida faoliyat yuritamiz — italyan bilimlarini Markaziy Osiyoning eng istiqbolli qishloq xo'jaligi hududiga olib boramiz.",
+    about_p3:"Global Farm ning maqsadi O'zbekiston qishloq xo'jaligiga xorijiy investitsiyalar uchun — va vaqt o'tishi bilan butun Markaziy Osiyo uchun — asosiy tayanch nuqtasiga aylanishdir. Maqsadimiz investitsiyaga tayyor loyihalarning tuzilgan quvurini ishlab chiqish, xalqaro kapitalini mintaqaning ajoyib qishloq xo'jaligi salohiyati bilan bog'lashdir.",
+    stat1:"Toshkentda imzolangan shartnoma, 2026", stat2:"Operatsion qamrov davlatlari",
+    stat3:"Hamkorlikning asosiy ustunlari", stat4:"O'sish va investitsiya imkoniyatlari",
+    agr_tag:"Tarixiy Hamkorlik", agr_h2:"O'zbekiston Qishloq xo'jaligi vazirligi bilan muhim shartnoma",
+    agr_p:"2026-yil 24-martda Toshkentdagi Italiya–Markaziy Osiyo Biznes Forumida Global Farm srl O'zbekiston Respublikasi Qishloq xo'jaligi vazirligi bilan strategik hamkorlik shartnomasi tuzdi. Bu shartnoma italyan-o'zbek qishloq xo'jaligi munosabatlarida yangi bobning boshlanishini belgilaydi va yer, infratuzilma va oziq-ovqat ishlab chiqarishga keng ko'lamli investitsiyalar uchun eshik ochadi.",
+    agr_date:"Imzolangan · Toshkent · 2026-yil 24-mart",
+    ms_tag:"Bizning Yo'limiz", ms_h2:"Endigina boshlangan hikoya",
+    ms1_date:"2026-yil boshi", ms1_title:"Birinchi Aloqa",
+    ms1_body:"Global Farm O'zbekiston Qishloq xo'jaligi vazirligi bilan rasmiy muloqot boshlaydi va tuzilgan hamkorlik doirasining asosini yaratadi.",
+    ms2_date:"2026-yil 24-mart", ms2_title:"Shartnoma Imzolandi",
+    ms2_body:"Toshkentdagi Italiya–Markaziy Osiyo Biznes Forumida Global Farm va O'zbekiston Qishloq xo'jaligi vazirligi strategik hamkorlik shartnomasi imzolaydi — Italiya va Markaziy Osiyo o'rtasidagi qishloq xo'jaligi investitsiyalarida yangi bob ochadigan muhim voqea.",
+    ms3_date:"2026 va undan keyin", ms3_title:"Quvurni Qurish",
+    ms3_body:"Global Farm ustuvor investitsiya sohalarini aniqlay boshlaydi, institutsional munosabatlarni o'rnatadi va xalqaro hamkorlar uchun birinchi loyiha imkoniyatlarini ishlab chiqadi.",
+    scope_tag:"Birgalikdagi Faoliyat", scope_h2:"Qishloq xo'jaligining kelajagi uchun umumiy tasavvur",
+    p1_title:"Zamonaviy Qishloq Xo'jaligi Infratuzilmasini Qurish",
+    p1_body:"Global Farm issiqxonalar va bog'lardan tortib qayta ishlash va tarqatish korxonalarigacha bo'lgan agrosanoat ob'ektlarini rivojlantirishda amaliy tajribaga ega. O'zbekiston Qishloq xo'jaligi vazirligi eng mos hududlar va yerlarni aniqlaydi hamda ruxsatnomalar, sertifikatlar va institutsional qo'llab-quvvatlashga kirishni osonlashtiradi.",
+    p2_title:"Bilim Almashish va Inson Kapitali",
+    p2_body:"Bu hamkorlikning asosiy ustunlaridan biri tajriba almashishdir. Global Farm ko'chatxonalarni boshqarish, nav tanlash, oziq-ovqat xavfsizligi, sifat nazorati va fitosanitariya standartlarida italyan eng yaxshi amaliyotlarini joriy etadi.",
+    p3_title:"Investitsiyalarni Jalb Etish va Bozorlarni Ochish",
+    p3_body:"Global Farm to'g'ridan-to'g'ri xorijiy investitsiyalarni jalb etish — ayniqsa italyan va evropalik hamkorlar bo'yicha — va o'zbek qishloq xo'jaligi ishlab chiqarishini xalqaro bozorlarga ulash uchun faol harakat qiladi.",
+    p4_title:"Uzoq Muddatli Institutsional Hamkorlik",
+    p4_body:"Bu hamkorlik bitta loyihadan ancha uzoqqa boradi. O'zbekiston Qishloq xo'jaligi vazirligi qo'llab-quvvatlashi va Global Farm operatsion tajribasi bilan shartnoma qo'shma tashabbuslar, biznes tadbirlar va ob'ektlarga tashrif buyurish uchun uzoq muddatli kanal yaratadi.",
+    why_tag:"Nega O'zbekiston", why_h2:"Ajoyib qishloq xo'jaligi salohiyatiga ega mamlakat",
+    why1_title:"Strategik Joylashuv", why1_body:"O'zbekiston Markaziy Osiyoning chorrahasida joylashgan bo'lib, beshta mamlakat bilan chegaradosh va 100 milliondan ortiq aholisi bo'lgan mintaqaviy bozorga kirish imkonini beradi.",
+    why2_title:"Unumdor Yer va Qulay Iqlim", why2_body:"Mamlakatning xilma-xil geografiyasi — unumdor daryovodiysidan keng tekisliklargacha — meva va sabzavotlardan tortib don ekinlarigacha keng ekin turlarini qo'llab-quvvatlaydi.",
+    why3_title:"Hukumat Tomonidan Qo'llab-quvvatlangan Investitsiya Doirasi", why3_body:"O'zbek hukumati xorijiy investitsiyalarni jalb etishni milliy ustuvorlik deb e'lon qilgan. Qishloq xo'jaligi vazirligi bilan tuzilgan hamkorlik shartnomasi orqali Global Farm investorlari bevosita institutsional qo'llab-quvvatlashdan foydalanadi.",
+    why4_title:"To'g'ri Vaqtda Rivojlanayotgan Bozor", why4_body:"O'zbekiston qishloq xo'jaligi sektori tez modernizatsiyadan o'tmoqda. Hozir kirish — instituttsional qo'llab-quvvatlash, past kirish xarajatlari va o'sish salohiyati yuqori bozorda birinchilik ustunligi bilan oldindan joylashish demakdir.",
+    sec_tag:"Investitsiya Sohalari", sec_h2:"Biz qayerda ishlaymiz",
+    sec1_title:"Sertifikatlangan Urug'lar va O'simlik Materiallari", sec1_body:"Xalqaro fitosanitariya standartlariga mos keladigan ko'chatxonalar va urug' ishlab chiqarish inshootlarini rivojlantirish.",
+    sec2_title:"Issiqxona va Himoyalangan Yetishtirish", sec2_body:"Yil davomida sabzavot va meva ishlab chiqarish uchun zamonaviy issiqxona infratuzilmasini loyihalash va o'rnatish.",
+    sec3_title:"Bog' va Meva Yetishtirish", sec3_body:"Olma va o'rikdan anor va uzumgacha yuqori qiymatli meva yetishtirish va meva yetishtirishga investitsiyalar.",
+    sec4_title:"Agro-Qayta Ishlash va Qadoqlash", sec4_body:"Hosildan keyingi qayta ishlash, sovuq zanjir logistikasi va eksportga tayyor qadoqlash inshootlarini rivojlantirish.",
+    contact_tag:"Bog'laning", contact_h2:"Investitsiya imkoniyatlarini o'rganishga tayyormisiz?",
+    contact_p:"Investor, qishloq xo'jaligi kompaniyasi yoki institutsional hamkor bo'lasizmi, global fermerlik kelajagi haqida suhbatlarni mamnuniyat bilan qabul qilamiz.",
+    cc_email:"Elektron pochta", cc_phone:"Telefon", cc_address:"Manzil",
+    footer_copy:"© 2026 Global Farm srl · Barcha huquqlar himoyalangan"
+  },
+  ru: {
+    nav_about:"О нас", nav_agreement:"Соглашение", nav_scope:"Сотрудничество", nav_why:"Почему Узбекистан", nav_contact:"Контакты",
+    hero_claim:"Выращивая партнёрства. Развивая инвестиции.",
+    hero_h1:"Выращивая <em>будущее</em> сельского хозяйства",
+    hero_sub:"Global Farm srl соединяет итальянское аграрное мастерство с огромными земельными возможностями Узбекистана — связывая инвесторов, экспертизу и видение через континенты.",
+    hero_cta:"Узнать о нашей миссии", scroll:"Прокрутите",
+    about_tag:"О нас", about_h2:"Итальянский стартап с глобальным аграрным видением",
+    about_p1:"Global Farm srl — итальянская компания, рождённая из простого убеждения: мировая сельскохозяйственная экспертиза, направленная в плодородные территории при должной институциональной поддержке, способна создавать исключительную ценность для инвесторов и сообществ.",
+    about_p2:"Мы работаем на пересечении агробизнеса, содействия инвестициям и международного сотрудничества — привнося итальянское ноу-хау в один из наиболее перспективных аграрных рубежей Центральной Азии.",
+    about_p3:"Амбиция Global Farm — стать точкой отсчёта для иностранных инвестиций в сельское хозяйство Узбекистана, а со временем — и всей Центральной Азии. Наша цель — создать структурированный портфель готовых к инвестированию проектов, соединяя международный капитал с экстраординарным аграрным потенциалом региона.",
+    stat1:"Соглашение подписано в Ташкенте, 2026", stat2:"Страны операционного охвата",
+    stat3:"Ключевые столпы сотрудничества", stat4:"Потенциал для роста и инвестиций",
+    agr_tag:"Историческое Партнёрство", agr_h2:"Знаковое соглашение с Министерством сельского хозяйства Узбекистана",
+    agr_p:"24 марта 2026 года на Бизнес-форуме Италия–Центральная Азия в Ташкенте компания Global Farm srl подписала стратегическое соглашение о сотрудничестве с Министерством сельского хозяйства Республики Узбекистан. Это соглашение знаменует начало нового этапа в итальяно-узбекских аграрных отношениях, открывая двери для масштабных инвестиций в землю, инфраструктуру и агропродовольственное производство.",
+    agr_date:"Подписано · Ташкент · 24 марта 2026",
+    ms_tag:"Наш Путь", ms_h2:"История, которая только начинается",
+    ms1_date:"Начало 2026", ms1_title:"Первый Контакт",
+    ms1_body:"Global Farm начинает официальный диалог с Министерством сельского хозяйства Узбекистана, закладывая основу для структурированной рамки сотрудничества.",
+    ms2_date:"24 марта 2026", ms2_title:"Подписание Соглашения",
+    ms2_body:"На Бизнес-форуме Италия–Центральная Азия в Ташкенте Global Farm и Министерство сельского хозяйства Узбекистана подписывают стратегическое соглашение о сотрудничестве — этапное событие, открывающее новую главу в аграрных инвестициях между Италией и Центральной Азией.",
+    ms3_date:"2026 и далее", ms3_title:"Создание Портфеля",
+    ms3_body:"Global Farm начинает определять приоритетные инвестиционные направления, выстраивать институциональные отношения и разрабатывать первые проектные возможности для международных партнёров.",
+    scope_tag:"Что Мы Делаем Вместе", scope_h2:"Общее видение будущего сельского хозяйства",
+    p1_title:"Создание Современной Аграрной Инфраструктуры",
+    p1_body:"Global Farm обладает практическим опытом в разработке агропромышленных объектов — от теплиц и садов до перерабатывающих и дистрибьюторских предприятий. Министерство сельского хозяйства Узбекистана определяет наиболее подходящие регионы и земли, содействует в получении разрешений, сертификатов и институциональной поддержки.",
+    p2_title:"Передача Знаний и Человеческий Капитал",
+    p2_body:"Один из ключевых столпов сотрудничества — обмен экспертизой. Global Farm внедряет итальянские лучшие практики в управлении питомниками, подборе сортов, безопасности пищевых продуктов, контроле качества и фитосанитарных стандартах.",
+    p3_title:"Привлечение Инвестиций и Открытие Рынков",
+    p3_body:"Global Farm активно работает по привлечению прямых иностранных инвестиций — с особым акцентом на итальянских и европейских партнёров — и по интеграции узбекского сельскохозяйственного производства в международные рынки.",
+    p4_title:"Долгосрочное Институциональное Партнёрство",
+    p4_body:"Это сотрудничество выходит далеко за рамки отдельного проекта. При поддержке Министерства сельского хозяйства Узбекистана и операционной экспертизе Global Farm соглашение создаёт долгосрочный канал для совместных инициатив, деловых мероприятий и выездных визитов.",
+    why_tag:"Почему Узбекистан", why_h2:"Земля с экстраординарным сельскохозяйственным потенциалом",
+    why1_title:"Стратегическое Расположение", why1_body:"Узбекистан находится на перекрёстке Центральной Азии, граничит с пятью странами и предоставляет доступ к региональному рынку с населением свыше 100 миллионов человек.",
+    why2_title:"Плодородные Земли и Благоприятный Климат", why2_body:"Разнообразная география страны — от плодородных речных долин до обширных равнин — поддерживает широкий спектр культур. Климат идеально подходит для тепличного растениеводства и круглогодичных производственных циклов.",
+    why3_title:"Инвестиционная Поддержка Государства", why3_body:"Правительство Узбекистана сделало привлечение иностранных инвестиций национальным приоритетом. Через наше соглашение с Министерством сельского хозяйства инвесторы Global Farm получают прямую институциональную поддержку и доступ к государственным стимулам.",
+    why4_title:"Развивающийся Рынок в Нужный Момент", why4_body:"Аграрный сектор Узбекистана переживает стремительную модернизацию. Войти сейчас — значит занять позицию с преимуществом первопроходца, институциональной поддержкой и низкими входными затратами.",
+    sec_tag:"Инвестиционные Направления", sec_h2:"Где мы работаем",
+    sec1_title:"Сертифицированные Семена и Посадочный Материал", sec1_body:"Создание питомников и семеноводческих предприятий, соответствующих международным фитосанитарным стандартам.",
+    sec2_title:"Тепличное и Защищённое Растениеводство", sec2_body:"Проектирование и строительство современной тепличной инфраструктуры для круглогодичного производства овощей и фруктов.",
+    sec3_title:"Садоводство и Плодоводство", sec3_body:"Инвестиции в высокоценные плодовые культуры — от яблок и абрикосов до гранатов и винограда.",
+    sec4_title:"Агропереработка и Упаковка", sec4_body:"Развитие объектов послеуборочной обработки, холодовой цепи и экспортно-ориентированной упаковки.",
+    contact_tag:"Свяжитесь с нами", contact_h2:"Готовы изучить инвестиционные возможности?",
+    contact_p:"Независимо от того, являетесь ли вы инвестором, сельскохозяйственной компанией или институциональным партнёром, мы открыты к диалогу о будущем мирового земледелия.",
+    cc_email:"Эл. почта", cc_phone:"Телефон", cc_address:"Адрес",
+    footer_copy:"© 2026 Global Farm srl · Все права защищены"
+  }
+};
+
+function setLang(lang) {
+  const t = i18n[lang];
+  document.querySelectorAll('[data-i18n]').forEach(el => {
+    const key = el.dataset.i18n;
+    if (t[key] !== undefined) el.innerHTML = t[key];
+  });
+  document.querySelectorAll('.lang-btn').forEach(btn => {
+    btn.classList.toggle('active', btn.textContent.toLowerCase() === lang);
+  });
+  document.documentElement.lang = lang;
+}
+
+/* ─── SCROLL REVEAL ─── */
+const observer = new IntersectionObserver(entries => {
+  entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
+}, { threshold: 0.1 });
+document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+</script>
+</body>
+</html>
